@@ -106,7 +106,7 @@ class _CuponsWidgetState extends State<CuponsWidget> {
                             children: [
                               AuthUserStreamWidget(
                                 child: Text(
-                                 valueOrDefault(currentUserDocument?.points, 0)
+                                  valueOrDefault(currentUserDocument?.points, 0)
                                       .toString(),
                                   style: FlutterFlowTheme.of(context)
                                       .title1

@@ -4,8 +4,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './quiz.dart';
-import './result.dart';
 
 class QuestionsWidget extends StatefulWidget {
   const QuestionsWidget({Key key}) : super(key: key);
@@ -16,105 +14,417 @@ class QuestionsWidget extends StatefulWidget {
 
 class _QuestionsWidgetState extends State<QuestionsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final questions = const[
-    {
-      'questionText': 'Q1. Who created Flutter?',
-      'answers': [
-        {'text': 'Facebook', 'score': -2},
-        {'text': 'Adobe', 'score': -2},
-        {'text': 'Google', 'score': 10},
-        {'text': 'Microsoft', 'score': -2},
-      ],
-    },
-    {
-      'questionText': 'Q2. What is Flutter?',
-      'answers': [
-        {'text': 'Android Development Kit', 'score': -2},
-        {'text': 'IOS Development Kit', 'score': -2},
-        {'text': 'Web Development Kit', 'score': -2},
-        {
-          'text':
-              'SDK to build beautiful IOS, Android, Web & Desktop Native Apps',
-          'score': 10
-        },
-      ],
-    },
-    {
-      'questionText': ' Q3. Which programing language is used by Flutter',
-      'answers': [
-        {'text': 'Ruby', 'score': -2},
-        {'text': 'Dart', 'score': 10},
-        {'text': 'C++', 'score': -2},
-        {'text': 'Kotlin', 'score': -2},
-      ],
-    },
-    {
-      'questionText': 'Q4. Who created Dart programing language?',
-      'answers': [
-        {'text': 'Lars Bak and Kasper Lund', 'score': 10},
-        {'text': 'Brendan Eich', 'score': -2},
-        {'text': 'Bjarne Stroustrup', 'score': -2},
-        {'text': 'Jeremy Ashkenas', 'score': -2},
-      ],
-    },
-    {
-      'questionText':
-          'Q5. Is Flutter for Web and Desktop available in stable version?',
-      'answers': [
-        {
-          'text': 'Yes',
-          'score': -2,
-        },
-        {'text': 'No', 'score': 10},
-      ],
-    },
-  ];
-
-  var questionIndex = 0;
-  var totalScore = 0;
- 
-  void resetQuiz() {
-    setState(() {
-      questionIndex = 0;
-      totalScore = 0;
-    });
-  }
- 
-  void answerQuestion(int score) {
-    totalScore += score;
- 
-    setState(() {
-      questionIndex = questionIndex + 1;
-    });
-    print(questionIndex);
-    if (questionIndex < questions.length) {
-      print('We have more questions!');
-    } else {
-      print('No more questions!');
-    }
-  }
-
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Geeks for Geeks'),
-          backgroundColor: Color.fromARGB(255, 254, 216, 45),
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          buttonSize: 46,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFF95A1AC),
+            size: 24,
+          ),
+          onPressed: () async {
+            Navigator.pop(context);
+          },
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: questionIndex < questions.length
-              ? Quiz(
-                  answerQuestion: answerQuestion,
-                  questionIndex: questionIndex,
-                  questions: questions,
-                ) //Quiz
-              : Result(totalScore, resetQuiz),
-        ), //Padding
-      ), //Scaffold
-      debugShowCheckedModeBanner: false,
-    ); //MaterialApp
+        title: Text(
+          'Reviews',
+          style: FlutterFlowTheme.of(context).subtitle1.override(
+                fontFamily: 'Lexend Deca',
+                color: Color(0xFF090F13),
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 0,
+      ),
+      backgroundColor: Color(0xFFF1F4F8),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 3,
+                      color: Color(0x39000000),
+                      offset: Offset(0, 1),
+                    )
+                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(12, 16, 12, 24),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
+                            child: AuthUserStreamWidget(
+                              child: Text(
+                                valueOrDefault(currentUserDocument?.points, 0)
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context)
+                                    .title1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Color(0xFF090F13),
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            'Puntos Totales',
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Color(0xFF95A1AC),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
+                                child: Text(
+                                  '100',
+                                  style: FlutterFlowTheme.of(context)
+                                      .title1
+                                      .override(
+                                        fontFamily: 'Lexend Deca',
+                                        color: Color(0xFF090F13),
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(4, 0, 0, 12),
+                                child: Icon(
+                                  Icons.star_rounded,
+                                  color: Color(0xFFFFA130),
+                                  size: 24,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            'Puntos ganados',
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Color(0xFF95A1AC),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '¿Que es un BIN?',
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle1
+                                          .override(
+                                            fontFamily: 'Lexend Deca',
+                                            color: Color(0xFFF06251),
+                                            fontSize: 32,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 80, 16, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Codigo de seguridad de 3 digitos',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle1
+                                          .override(
+                                            fontFamily: 'Lexend Deca',
+                                            color: Color(0xFF090F13),
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 50, 16, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Código de identificación\ndel titular de la tarjeta',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle1
+                                          .override(
+                                            fontFamily: 'Lexend Deca',
+                                            color: Color(0xFF090F13),
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 50, 16, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 4,
+                        color: Color(0x33000000),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Fecha de caducidad de la tarjeta',
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle1
+                                          .override(
+                                            fontFamily: 'Lexend Deca',
+                                            color: Color(0xFF090F13),
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
