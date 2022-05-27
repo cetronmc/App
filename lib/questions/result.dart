@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import '../auth/auth_util.dart';
+import '../flutter_flow/flutter_flow_util.dart';
 
 class Result extends StatelessWidget {
 final int resultScore;
@@ -9,37 +11,33 @@ final Function resetHandler;
 Result(this.resultScore, this.resetHandler);
 var collection = FirebaseFirestore.instance.collection('users');
 
-//Remark Logic
+var user = FirebaseAuth.instance.currentUser;
+var points = valueOrDefault(currentUserDocument?.points, 0)
+                                      .toString();
+//Remark Logics
 String get resultPhrase {
-	String resultText;
-  Map result1= {};
 
-  var result = { 'points': resultScore};
-  result1[0] = resultScore.toString();
-	if (resultScore >= 41) {
-	resultText = 'You are awesome!';
+
+	String resultText;
+	if (resultScore >= 100) {
+	resultText = 'Increible!';
 	print(resultScore);
-  collection.doc('uid').update(result);
 	} else if (resultScore >= 31) {
-	resultText = 'Pretty likeable!';
+	resultText = 'Muy Bien!';
 	print(resultScore);
-    collection.doc('uid').update({ 'points': resultScore});
 
 	} else if (resultScore >= 21) {
-	resultText = 'You need to work more!';
-   collection.doc('uid').update({ 'points': resultScore});
+	resultText = 'Puedes hacerlo mejor!';
 
 	} else if (resultScore >= 1) {
-	resultText = 'You need to work hard!';
-    collection.doc('uid').update({ 'points': resultScore});
+	resultText = 'Necesitas estudiar mas!';
 
 	} else {
-	resultText = 'This is a poor score!';
+	resultText = 'Suerte para la proxima Soldado!';
 	print(resultScore);
-    collection.doc('uid').update({ 'points': resultScore});
 
 	}
-    collection.doc('uid').update({ 'points': resultScore});
+    collection.doc(user.uid).update({ 'points': int.parse(points) + resultScore});
 
 	return resultText;
 }
