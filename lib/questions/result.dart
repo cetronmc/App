@@ -19,14 +19,14 @@ String get resultPhrase {
 
 
 	String resultText;
-	if (resultScore >= 100) {
+	if (resultScore >= 150) {
 	resultText = 'Increible!';
 	print(resultScore);
-	} else if (resultScore >= 31) {
+	} else if (resultScore >= 100) {
 	resultText = 'Muy Bien!';
 	print(resultScore);
 
-	} else if (resultScore >= 21) {
+	} else if (resultScore >= 50) {
 	resultText = 'Puedes hacerlo mejor!';
 
 	} else if (resultScore >= 1) {

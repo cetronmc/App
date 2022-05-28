@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../ayuda/ayuda_widget.dart';
 import '../cupons/cupons_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -371,48 +372,62 @@ class _MenuWidgetState extends State<MenuWidget> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: 345,
-                              height: 200,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF1F4F8),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 5,
-                                    color: Color(0x3B000000),
-                                    offset: Offset(0, 2),
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.live_help,
-                                      color: Color(0xFF187498),
-                                      size: 90,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 8, 0, 0),
-                                      child: Text(
-                                        'Ayuda',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF090F13),
-                                              fontSize: 32,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                      ),
-                                    ),
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
+                                    duration: Duration(milliseconds: 300),
+                                    reverseDuration:
+                                        Duration(milliseconds: 300),
+                                    child: AyudaWidget(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: 345,
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF1F4F8),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 5,
+                                      color: Color(0x3B000000),
+                                      offset: Offset(0, 2),
+                                    )
                                   ],
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      4, 4, 4, 4),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.live_help,
+                                        color: Color(0xFF187498),
+                                        size: 90,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 8, 0, 0),
+                                        child: Text(
+                                          'Ayuda',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color: Color(0xFF090F13),
+                                                fontSize: 32,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
