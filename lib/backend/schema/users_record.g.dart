@@ -67,6 +67,34 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add('points')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
+    value = object.item2;
+    if (value != null) {
+      result
+        ..add('item2')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.item3;
+    if (value != null) {
+      result
+        ..add('item3')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.item4;
+    if (value != null) {
+      result
+        ..add('item4')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.item1;
+    if (value != null) {
+      result
+        ..add('item1')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -117,6 +145,22 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.points = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'item2':
+          result.item2 = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'item3':
+          result.item3 = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'item4':
+          result.item4 = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'item1':
+          result.item1 = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -146,6 +190,14 @@ class _$UsersRecord extends UsersRecord {
   @override
   final int points;
   @override
+  final bool item2;
+  @override
+  final bool item3;
+  @override
+  final bool item4;
+  @override
+  final bool item1;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder) updates]) =>
@@ -159,6 +211,10 @@ class _$UsersRecord extends UsersRecord {
       this.createdTime,
       this.phoneNumber,
       this.points,
+      this.item2,
+      this.item3,
+      this.item4,
+      this.item1,
       this.reference})
       : super._();
 
@@ -180,6 +236,10 @@ class _$UsersRecord extends UsersRecord {
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
         points == other.points &&
+        item2 == other.item2 &&
+        item3 == other.item3 &&
+        item4 == other.item4 &&
+        item1 == other.item1 &&
         reference == other.reference;
   }
 
@@ -190,12 +250,22 @@ class _$UsersRecord extends UsersRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, email.hashCode), displayName.hashCode),
-                            photoUrl.hashCode),
-                        uid.hashCode),
-                    createdTime.hashCode),
-                phoneNumber.hashCode),
-            points.hashCode),
+                        $jc(
+                            $jc(
+                                $jc(
+                                    $jc(
+                                        $jc(
+                                            $jc($jc(0, email.hashCode),
+                                                displayName.hashCode),
+                                            photoUrl.hashCode),
+                                        uid.hashCode),
+                                    createdTime.hashCode),
+                                phoneNumber.hashCode),
+                            points.hashCode),
+                        item2.hashCode),
+                    item3.hashCode),
+                item4.hashCode),
+            item1.hashCode),
         reference.hashCode));
   }
 
@@ -209,6 +279,10 @@ class _$UsersRecord extends UsersRecord {
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
           ..add('points', points)
+          ..add('item2', item2)
+          ..add('item3', item3)
+          ..add('item4', item4)
+          ..add('item1', item1)
           ..add('reference', reference))
         .toString();
   }
@@ -245,6 +319,22 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   int get points => _$this._points;
   set points(int points) => _$this._points = points;
 
+  bool _item2;
+  bool get item2 => _$this._item2;
+  set item2(bool item2) => _$this._item2 = item2;
+
+  bool _item3;
+  bool get item3 => _$this._item3;
+  set item3(bool item3) => _$this._item3 = item3;
+
+  bool _item4;
+  bool get item4 => _$this._item4;
+  set item4(bool item4) => _$this._item4 = item4;
+
+  bool _item1;
+  bool get item1 => _$this._item1;
+  set item1(bool item1) => _$this._item1 = item1;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -264,6 +354,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
       _points = $v.points;
+      _item2 = $v.item2;
+      _item3 = $v.item3;
+      _item4 = $v.item4;
+      _item1 = $v.item1;
       _reference = $v.reference;
       _$v = null;
     }
@@ -292,6 +386,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
             createdTime: createdTime,
             phoneNumber: phoneNumber,
             points: points,
+            item2: item2,
+            item3: item3,
+            item4: item4,
+            item1: item1,
             reference: reference);
     replace(_$result);
     return _$result;

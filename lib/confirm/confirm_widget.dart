@@ -5,8 +5,12 @@ import '../menu/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:uuid/uuid.dart';
+
+var uuid = Uuid();
 
 class ConfirmWidget extends StatefulWidget {
+
   const ConfirmWidget({
     Key key,
     this.dato1,
@@ -26,7 +30,7 @@ class ConfirmWidget extends StatefulWidget {
 
 class _ConfirmWidgetState extends State<ConfirmWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
+  final randomData = uuid.v1();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +73,7 @@ class _ConfirmWidgetState extends State<ConfirmWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                 child: Text(
-                  widget.dato1,
+                  randomData,
                   style: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,

@@ -8,7 +8,7 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 class CuponsWidget extends StatefulWidget {
   const CuponsWidget({
     Key key,
@@ -23,7 +23,8 @@ class CuponsWidget extends StatefulWidget {
 
 class _CuponsWidgetState extends State<CuponsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
+  var currentPoints = valueOrDefault(currentUserDocument?.points, 0)
+                                      .toString();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,26 +187,29 @@ class _CuponsWidgetState extends State<CuponsWidget> {
                                 onTap: () async {
                                   final usersUpdateData = createUsersRecordData(
                                     item1: true,
+                                    points: (int.parse(currentPoints) - 400),
                                   );
-                                  await currentUserReference
+                                  if((int.parse(currentPoints)) > 400){
+                                    await currentUserReference
                                       .update(usersUpdateData);
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ConfirmWidget(
-                                        dato1: valueOrDefault<String>(
-                                          random_data.randomString(
-                                            1,
-                                            10,
-                                            false,
-                                            true,
-                                            true,
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ConfirmWidget(
+                                          dato1: valueOrDefault<String>(
+                                            random_data.randomString(
+                                              1,
+                                              10,
+                                              false,
+                                              true,
+                                              true,
+                                            ),
+                                            'null',
                                           ),
-                                          'null',
                                         ),
                                       ),
-                                    ),
-                                  );
+                                    );
+                                  }
                                 },
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -280,28 +284,32 @@ class _CuponsWidgetState extends State<CuponsWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                             child: InkWell(
                               onTap: () async {
+                                
                                 final usersUpdateData = createUsersRecordData(
                                   item2: true,
+                                  points: (int.parse(currentPoints) - 700),
                                 );
-                                await currentUserReference
-                                    .update(usersUpdateData);
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ConfirmWidget(
-                                      dato1: valueOrDefault<String>(
-                                        random_data.randomString(
-                                          1,
-                                          10,
-                                          false,
-                                          true,
-                                          true,
+                                if((int.parse(currentPoints)) > 700){
+                                  await currentUserReference
+                                      .update(usersUpdateData);
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ConfirmWidget(
+                                        dato1: valueOrDefault<String>(
+                                          random_data.randomString(
+                                            1,
+                                            10,
+                                            false,
+                                            true,
+                                            true,
+                                          ),
+                                          'null',
                                         ),
-                                        'null',
                                       ),
                                     ),
-                                  ),
-                                );
+                                  );
+                                }
                               },
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -369,17 +377,20 @@ class _CuponsWidgetState extends State<CuponsWidget> {
                               onTap: () async {
                                 final usersUpdateData = createUsersRecordData(
                                   item3: true,
+                                  points: (int.parse(currentPoints) - 400),
                                 );
-                                await currentUserReference
-                                    .update(usersUpdateData);
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ConfirmWidget(
-                                      dato1: '',
+                                if((int.parse(currentPoints)) > 400){
+                                  await currentUserReference
+                                      .update(usersUpdateData);
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ConfirmWidget(
+                                        dato1: '',
+                                      ),
                                     ),
-                                  ),
-                                );
+                                  );
+                                }
                               },
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -447,17 +458,20 @@ class _CuponsWidgetState extends State<CuponsWidget> {
                               onTap: () async {
                                 final usersUpdateData = createUsersRecordData(
                                   item4: true,
+                                  points: (int.parse(currentPoints) - 250),
                                 );
-                                await currentUserReference
-                                    .update(usersUpdateData);
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ConfirmWidget(
-                                      dato1: '',
+                                if((int.parse(currentPoints)) > 250){
+                                  await currentUserReference
+                                      .update(usersUpdateData);
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ConfirmWidget(
+                                        dato1: '',
+                                      ),
                                     ),
-                                  ),
-                                );
+                                  );
+                                }
                               },
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,

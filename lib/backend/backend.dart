@@ -202,6 +202,11 @@ Future maybeCreateUser(User user) async {
     uid: user.uid,
     phoneNumber: user.phoneNumber,
     createdTime: getCurrentTimestamp,
+    points: 0,
+    item1: false,
+    item2: false,
+    item3: false,
+    item4: false,
   );
 
   await userRecord.set(userData);
