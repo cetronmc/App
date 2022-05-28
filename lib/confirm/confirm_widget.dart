@@ -1,13 +1,24 @@
-import '../cupons/cupons_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../menu/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class ConfirmWidget extends StatefulWidget {
-  const ConfirmWidget({Key key}) : super(key: key);
+  const ConfirmWidget({
+    Key key,
+    this.dato1,
+    this.dato2,
+    this.dato3,
+    this.dato4,
+  }) : super(key: key);
+
+  final String dato1;
+  final String dato2;
+  final String dato3;
+  final String dato4;
 
   @override
   _ConfirmWidgetState createState() => _ConfirmWidgetState();
@@ -47,7 +58,7 @@ class _ConfirmWidgetState extends State<ConfirmWidget> {
                 ),
               ),
               Text(
-                'Canjea tus puntos',
+                'Tu codigo es',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Outfit',
                       color: Colors.white,
@@ -58,39 +69,13 @@ class _ConfirmWidgetState extends State<ConfirmWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                 child: Text(
-                  'confirma si quieres cajear tus puntos',
+                  widget.dato1,
                   style: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.w300,
                       ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
-                child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
-                  },
-                  text: 'Canjear',
-                  options: FFButtonOptions(
-                    width: 130,
-                    height: 50,
-                    color: Colors.white,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Outfit',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                        ),
-                    elevation: 3,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 30,
-                  ),
                 ),
               ),
               Padding(
@@ -103,18 +88,18 @@ class _ConfirmWidgetState extends State<ConfirmWidget> {
                         type: PageTransitionType.leftToRight,
                         duration: Duration(milliseconds: 300),
                         reverseDuration: Duration(milliseconds: 300),
-                        child: CuponsWidget(),
+                        child: MenuWidget(),
                       ),
                     );
                   },
-                  text: 'Cancelar',
+                  text: 'Aceptar',
                   options: FFButtonOptions(
                     width: 130,
                     height: 50,
                     color: Colors.white,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Outfit',
-                          color: FlutterFlowTheme.of(context).primaryText,
+                          color: Colors.black,
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
                         ),

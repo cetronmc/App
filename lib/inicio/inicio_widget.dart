@@ -65,6 +65,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                       'Credit App',
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
+                            color: Colors.black,
                             fontSize: 32,
                           ),
                     ),
@@ -81,7 +82,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyText2.override(
                               fontFamily: 'Lexend Deca',
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: Colors.black,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
