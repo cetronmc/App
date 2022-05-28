@@ -376,12 +376,8 @@ class _MenuWidgetState extends State<MenuWidget> {
                               onTap: () async {
                                 await Navigator.push(
                                   context,
-                                  PageTransition(
-                                    type: PageTransitionType.bottomToTop,
-                                    duration: Duration(milliseconds: 300),
-                                    reverseDuration:
-                                        Duration(milliseconds: 300),
-                                    child: AyudaWidget(),
+                                  MaterialPageRoute(
+                                    builder: (context) => AyudaWidget(),
                                   ),
                                 );
                               },

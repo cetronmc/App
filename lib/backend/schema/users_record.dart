@@ -35,6 +35,18 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   int get points;
 
   @nullable
+  bool get item2;
+
+  @nullable
+  bool get item3;
+
+  @nullable
+  bool get item4;
+
+  @nullable
+  bool get item1;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -44,7 +56,11 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..photoUrl = ''
     ..uid = ''
     ..phoneNumber = ''
-    ..points = 0;
+    ..points = 0
+    ..item2 = false
+    ..item3 = false
+    ..item4 = false
+    ..item1 = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -75,6 +91,10 @@ Map<String, dynamic> createUsersRecordData({
   DateTime createdTime,
   String phoneNumber,
   int points,
+  bool item2,
+  bool item3,
+  bool item4,
+  bool item1,
 }) =>
     serializers.toFirestore(
         UsersRecord.serializer,
@@ -85,4 +105,8 @@ Map<String, dynamic> createUsersRecordData({
           ..uid = uid
           ..createdTime = createdTime
           ..phoneNumber = phoneNumber
-          ..points = points));
+          ..points = points
+          ..item2 = item2
+          ..item3 = item3
+          ..item4 = item4
+          ..item1 = item1));
